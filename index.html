@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>พอร์ตโฟลิโอ · อยธนา กิตติธนวัตร</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chonburi&family=Anuphan:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E9EDFF; --card:#FFFFFF; --ink:#1E2246; --ink-soft:#5A6089; --line:#1E2246;
+  --mint:#2FCBA0; --peach:#FF8A6B; --yolk:#FFC63F; --grape:#8A6BFF; --sky:#5FB4FF;
+  --shadow:rgba(30,34,70,1); --dot:rgba(30,34,70,.10); --tape:rgba(255,198,63,.55);
+}
+:root:not([data-theme="light"]){ color-scheme:light; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#161A34; --card:#1F2447; --ink:#EDF0FF; --ink-soft:#A3AAD6; --line:#39406F;
+    --shadow:#0C0F22; --dot:rgba(255,255,255,.08); --tape:rgba(255,198,63,.3); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#161A34; --card:#1F2447; --ink:#EDF0FF; --ink-soft:#A3AAD6; --line:#39406F;
+  --shadow:#0C0F22; --dot:rgba(255,255,255,.08); --tape:rgba(255,198,63,.3); color-scheme:dark;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background-color:var(--paper);
+  background-image:radial-gradient(var(--dot) 1.4px, transparent 1.4px);
+  background-size:22px 22px; color:var(--ink);
+  font-family:'Anuphan',system-ui,sans-serif;
+  font-size:16px; line-height:1.75; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+h1,h2,h3{font-family:'Chonburi',serif;font-weight:400;line-height:1.4;margin:0;letter-spacing:.2px;}
+p{margin:0 0 .9em;}
+a{color:inherit;}
+.num{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px;}
+section{padding:74px 0;}
+.sticker{
+  background:var(--card);
+  border:2.5px solid var(--line);
+  border-radius:22px;
+  box-shadow:5px 6px 0 var(--shadow);
+  transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s cubic-bezier(.22,1,.36,1);
+}
+
+.nav{
+  position:sticky;top:14px;z-index:60;
+  display:flex;justify-content:center;padding:0 16px;margin-top:14px;
+}
+.nav-inner{
+  display:flex;align-items:center;gap:4px;
+  background:color-mix(in srgb, var(--card) 88%, transparent);
+  backdrop-filter:blur(10px) saturate(1.2);
+  -webkit-backdrop-filter:blur(10px) saturate(1.2);
+  border:2.5px solid var(--line);
+  border-radius:999px;padding:6px;box-shadow:4px 5px 0 var(--shadow);
+  max-width:100%;overflow-x:auto;scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav a{
+  text-decoration:none;font-size:14.5px;font-weight:500;
+  padding:7px 14px;border-radius:999px;white-space:nowrap;
+  transition:background .2s cubic-bezier(.22,1,.36,1),color .2s ease,transform .18s ease;
+}
+.nav a:hover,.nav a:focus-visible{background:var(--mint);color:#08231C;transform:translateY(-1px);}
+.round-btn{
+  border:2px solid var(--line);background:var(--yolk);color:#3A2A00;
+  width:38px;height:38px;border-radius:999px;cursor:pointer;
+  font-size:17px;line-height:1;flex:0 0 auto;margin-left:4px;
+  transition:transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s ease;
+}
+.round-btn:hover{transform:rotate(-12deg) scale(1.09);box-shadow:2px 3px 0 var(--shadow);}
+
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-top:52px;}
+.tag{display:inline-block;font-size:13px;font-weight:600;background:var(--tape);color:var(--ink);
+  padding:4px 14px;border-radius:6px;transform:rotate(-1.6deg);margin-bottom:18px;}
+.hero h1{font-size:clamp(34px,5.4vw,56px);letter-spacing:-.5px;}
+.wob{display:inline-block;}
+.hero-sub{font-size:19px;color:var(--ink-soft);max-width:34ch;margin-top:10px;}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
+.sticker:hover{transform:translateY(-3px);box-shadow:6px 8px 0 var(--shadow);}
+
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:inherit;
+  font-weight:600;font-size:15.5px;padding:12px 22px;border-radius:999px;border:2.5px solid var(--line);
+  box-shadow:4px 5px 0 var(--shadow);transition:transform .16s cubic-bezier(.22,1,.36,1),box-shadow .16s ease;cursor:pointer;}
+.btn:hover{transform:translateY(-2px);box-shadow:5px 7px 0 var(--shadow);}
+.btn:active{transform:translate(4px,5px);box-shadow:0 0 0 var(--shadow);}
+.btn-a{background:var(--mint);color:#08231C;}
+.btn-b{background:var(--card);color:var(--ink);}
+
+.rule{height:0;border-top:2.5px dashed var(--line);opacity:.28;max-width:1060px;margin:0 auto;}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.sec-head h2{font-size:clamp(24px,3.4vw,32px);}
+.chip-icon{width:42px;height:42px;border-radius:14px;border:2.5px solid var(--line);
+  display:grid;place-items:center;font-size:20px;flex:0 0 auto;box-shadow:3px 3px 0 var(--shadow);}
+.sec-lead{color:var(--ink-soft);max-width:56ch;margin-bottom:30px;}
+.pills{display:flex;flex-wrap:wrap;gap:9px;}
+.pill{font-size:14px;font-weight:500;padding:6px 14px;border-radius:999px;
+  border:2.5px solid var(--line);background:var(--card);transition:transform .14s;display:inline-block;}
+.pill:hover{transform:translateY(-3px) rotate(-2deg);}
+
+.about{display:grid;grid-template-columns:.85fr 1.15fr;gap:34px;align-items:start;}
+.idcard{padding:22px;}
+.idrow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1.5px dashed var(--line);font-size:14.5px;}
+.idrow:last-child{border-bottom:none;}
+.idrow span:first-child{color:var(--ink-soft);}
+.idrow span:last-child{font-weight:600;text-align:right;}
+.avatar{width:64px;height:64px;border-radius:18px;border:2.5px solid var(--line);background:var(--sky);
+  display:grid;place-items:center;font-size:28px;flex:0 0 auto;}
+.idtop{display:flex;gap:14px;align-items:center;padding-bottom:14px;border-bottom:2.5px solid var(--line);margin-bottom:6px;}
+.idtop h3{font-size:19px;}
+.idtop p{margin:0;font-size:13px;color:var(--ink-soft);}
+.about-body p{font-size:16.5px;}
+.hl{background:linear-gradient(transparent 62%,var(--tape) 62%);padding:0 2px;font-weight:600;}
+
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
+.skill-card{padding:22px;}
+.skill-card h3{font-size:18px;margin-bottom:14px;}
+.meter{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;font-size:15px;}
+.dots{display:flex;gap:5px;flex:0 0 auto;}
+.dots i{width:13px;height:13px;border-radius:50%;border:2px solid var(--line);display:block;background:transparent;}
+.dots i.on{background:var(--c,var(--mint));}
+
+.hobby{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.hbox{padding:24px;}
+.cassette{width:100%;max-width:260px;margin:4px auto 14px;display:block;cursor:pointer;}
+.reel{transform-origin:center;transform-box:fill-box;}
+.spin .reel{animation:turn 1.6s linear infinite;}
+@keyframes turn{to{transform:rotate(360deg);}}
+.eq{display:flex;align-items:flex-end;gap:4px;height:26px;margin-top:6px;}
+.eq i{width:6px;background:var(--grape);border-radius:3px;height:6px;display:block;}
+.spin ~ .eq i{animation:bounce .7s ease-in-out infinite alternate;}
+.eq i:nth-child(2){animation-delay:.1s}.eq i:nth-child(3){animation-delay:.22s}
+.eq i:nth-child(4){animation-delay:.05s}.eq i:nth-child(5){animation-delay:.3s}
+.eq i:nth-child(6){animation-delay:.16s}.eq i:nth-child(7){animation-delay:.26s}
+@keyframes bounce{to{height:24px;}}
+.shelf{display:flex;gap:8px;align-items:flex-end;justify-content:center;height:130px;margin:8px 0 16px;}
+.book{width:30px;border:2.5px solid var(--line);border-radius:5px 5px 3px 3px;cursor:pointer;
+  transition:transform .25s cubic-bezier(.3,1.4,.5,1);position:relative;}
+.book:hover,.book.up{transform:translateY(-16px) rotate(-5deg);}
+.book b{position:absolute;inset:0;display:grid;place-items:center;writing-mode:vertical-rl;
+  font-size:11.5px;font-weight:600;color:#0F1430;font-family:'Anuphan',sans-serif;}
+#bookNote{font-size:14px;color:var(--ink-soft);min-height:2.6em;margin:0;}
+
+.machine{padding:26px;text-align:center;}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 6px;}
+.slot{border:2.5px solid var(--line);border-radius:16px;padding:16px 10px;background:var(--paper);
+  min-height:92px;display:grid;place-items:center;overflow:hidden;}
+.slot span{font-weight:600;font-size:15.5px;display:block;}
+.slot small{display:block;font-size:11.5px;color:var(--ink-soft);margin-bottom:6px;}
+.rolling span{animation:roll .12s linear infinite;}
+@keyframes roll{0%{opacity:.25;transform:translateY(-8px);}100%{opacity:1;transform:translateY(8px);}}
+#ideaOut{font-family:'Anuphan',sans-serif;font-weight:600;font-size:18px;margin:16px 0 0;min-height:3em;}
+#ideaCount{font-size:13px;color:var(--ink-soft);}
+
+.plan{display:grid;gap:16px;}
+.step{display:grid;grid-template-columns:54px 1fr;gap:16px;align-items:start;padding:20px;}
+.stepnum{width:54px;height:54px;border-radius:16px;border:2.5px solid var(--line);display:grid;place-items:center;
+  font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;color:#0F1430;}
+.step h3{font-size:18px;margin-bottom:4px;}
+.step p{margin:0;font-size:15px;color:var(--ink-soft);}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+.note{padding:26px;}
+.note h2{font-size:26px;margin-bottom:14px;}
+.cline{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1.5px dashed var(--line);font-size:15px;}
+.cline:last-of-type{border-bottom:none;}
+.cline .ic{font-size:19px;}
+.cline a{font-weight:600;}
+.why{padding:26px;background:var(--mint);color:#08231C;}
+.why h3{font-size:20px;margin-bottom:10px;}
+.why p{font-size:15px;margin:0;}
+.hint{font-size:12.5px;color:var(--ink-soft);margin-top:12px;}
+.foot{text-align:center;font-size:13px;color:var(--ink-soft);padding:34px 20px 54px;}
+
+.kwrap{position:fixed;inset:0;z-index:200;display:none;align-items:flex-start;justify-content:center;
+  padding:12vh 16px;background:rgba(20,24,52,.45);backdrop-filter:blur(3px);}
+.kwrap.open{display:flex;}
+.kbox{width:100%;max-width:460px;background:var(--card);border:2.5px solid var(--line);
+  border-radius:22px;box-shadow:6px 7px 0 var(--shadow);overflow:hidden;}
+#kin{width:100%;border:none;border-bottom:2.5px solid var(--line);background:transparent;color:var(--ink);
+  font-family:inherit;font-size:16px;padding:16px 18px;outline:none;}
+#klist{list-style:none;margin:0;padding:6px;max-height:44vh;overflow:auto;}
+#klist li{padding:10px 14px;border-radius:14px;cursor:pointer;display:flex;gap:10px;align-items:center;font-size:15px;}
+#klist li.sel{background:var(--mint);color:#08231C;font-weight:600;}
+.kfoot{padding:8px 16px;border-top:1.5px dashed var(--line);font-size:12px;color:var(--ink-soft);}
+
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,120%);z-index:300;
+  background:var(--ink);color:var(--paper);padding:11px 22px;border-radius:999px;font-size:14.5px;
+  transition:transform .35s cubic-bezier(.3,1.4,.5,1);}
+#toast.show{transform:translate(-50%,0);}
+.bit{position:fixed;pointer-events:none;z-index:250;font-size:16px;animation:pop .9s ease-out forwards;}
+@keyframes pop{from{opacity:1;transform:translate(0,0) rotate(0);}to{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot));}}
+.rain{position:fixed;top:-30px;z-index:250;pointer-events:none;font-size:20px;animation:fall linear forwards;}
+@keyframes fall{to{transform:translateY(105vh) rotate(420deg);opacity:0;}}
+
+#prog{position:fixed;top:0;left:0;height:5px;width:0;z-index:300;
+  background:linear-gradient(90deg,var(--mint),var(--sky),var(--grape));border-radius:0 3px 3px 0;}
+
+.album{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:24px;}
+.polaroid{background:var(--card);border:2.5px solid var(--line);border-radius:10px;
+  box-shadow:5px 6px 0 var(--shadow);padding:12px 12px 8px;position:relative;
+  transition:transform .22s cubic-bezier(.3,1.3,.5,1);}
+.polaroid:nth-child(odd){transform:rotate(-1.4deg);}
+.polaroid:nth-child(3n){transform:rotate(1.8deg);}
+.polaroid:hover{transform:rotate(0) translateY(-5px);z-index:2;}
+.polaroid img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;
+  border:2px solid var(--line);border-radius:6px;background:var(--paper);}
+.cap{width:100%;border:none;background:transparent;color:var(--ink);font-family:'Anuphan',sans-serif;
+  font-size:14.5px;text-align:center;padding:9px 2px 4px;outline:none;}
+.cap:focus{background:var(--tape);border-radius:6px;}
+.del{position:absolute;top:-11px;right:-11px;width:30px;height:30px;border-radius:50%;
+  border:2.5px solid var(--line);background:var(--peach);color:#3A1200;cursor:pointer;
+  font-size:15px;line-height:1;font-family:inherit;}
+.addcard{border:3px dashed var(--line);border-radius:10px;background:transparent;cursor:pointer;
+  display:grid;place-items:center;gap:6px;min-height:230px;color:var(--ink-soft);
+  font-family:inherit;font-size:15px;font-weight:600;transition:background .2s,transform .18s;}
+.addcard:hover,.addcard.over{background:var(--tape);color:var(--ink);transform:scale(1.02);}
+.addcard b{font-size:34px;display:block;}
+.avatar-up{position:relative;overflow:hidden;cursor:pointer;padding:0;}
+.avatar-up img{width:100%;height:100%;object-fit:cover;}
+.avatar-up::after{content:"📷";position:absolute;bottom:-2px;right:2px;font-size:13px;}
+
+.stampbox{padding:24px;}
+.stamps{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:14px;margin-top:14px;}
+.stamp{text-align:center;font-size:12.5px;color:var(--ink-soft);}
+.stamp .ring{width:62px;height:62px;margin:0 auto 6px;border-radius:50%;border:3px dashed var(--line);
+  display:grid;place-items:center;font-size:24px;opacity:.3;filter:grayscale(1);transition:all .35s cubic-bezier(.3,1.5,.5,1);}
+.stamp.got .ring{opacity:1;filter:none;border-style:solid;background:var(--tape);transform:rotate(-8deg) scale(1.06);}
+.stamp.got{color:var(--ink);font-weight:600;}
+
+@media print{
+  .nav,#prog,#toast,.btn,.addcard,.del,#spin,.kwrap,.eq,.flask-cap,.stampbox,.rule{display:none!important;}
+  body{background:#fff;color:#000;}
+  .sticker,.polaroid,.face{box-shadow:none;border-color:#000;}
+  section{padding:24px 0;page-break-inside:avoid;}
+  .lift{opacity:1!important;transform:none!important;}
+}
+
+.photo-frame{position:relative;padding:14px;}
+.photo-frame::before{content:"แนะนำตัว";position:absolute;top:-14px;left:28px;transform:rotate(-2deg);
+  background:var(--tape);font-size:12.5px;font-weight:600;padding:2px 16px;border-radius:4px;z-index:2;}
+.photo-slot{width:100%;aspect-ratio:4/5;border-radius:16px;border:2.5px solid var(--line);
+  overflow:hidden;position:relative;background:var(--paper);cursor:pointer;}
+.photo-slot img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-empty{position:absolute;inset:0;display:grid;place-items:center;gap:8px;text-align:center;
+  padding:20px;color:var(--ink-soft);transition:background .2s,color .2s;}
+.photo-empty b{font-size:38px;display:block;color:var(--ink);}
+.photo-empty span{font-size:14.5px;font-weight:600;max-width:20ch;}
+.photo-slot.over .photo-empty,.photo-slot:hover .photo-empty{background:var(--tape);color:var(--ink);}
+.photo-edit{position:absolute;bottom:10px;right:10px;font-size:12.5px;font-weight:600;
+  background:var(--card);border:2px solid var(--line);border-radius:999px;padding:5px 12px;
+  box-shadow:2px 3px 0 var(--shadow);}
+.idcol{display:flex;flex-direction:column;gap:16px;align-items:center;}
+.mascot-nook{width:100%;max-width:170px;text-align:center;}
+#mascot{width:100%;max-width:130px;height:auto;cursor:pointer;transition:transform .2s ease;}
+#mascot:hover{transform:scale(1.05) rotate(-3deg);}
+.mascot-note{font-size:12.5px;color:var(--ink-soft);margin:6px 0 0;}
+.flask-cap{font-size:13px;color:var(--ink-soft);margin:10px 4px 2px;text-align:center;}
+
+.lift{opacity:0;transform:translateY(16px);}
+.lift.on{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1);}
+:focus-visible{outline:3px solid var(--grape);outline-offset:3px;border-radius:8px;}
+
+@media (max-width:860px){
+  .hero,.about,.contact,.hobby{grid-template-columns:1fr;}
+  .hero{padding-top:32px;gap:26px;}
+  .photo-frame{order:-1;}
+  section{padding:54px 0;}
+  .slots{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+  .lift{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#hero">หน้าแรก</a>
+    <a href="#about">เกี่ยวกับผม</a>
+    <a href="#skills">ทักษะ</a>
+    <a href="#hobby">สิ่งที่ชอบ</a>
+    <a href="#idea">เครื่องปั่นไอเดีย</a>
+    <a href="#album">อัลบั้ม</a>
+    <a href="#plan">แผนของผม</a>
+    <a href="#contact">ติดต่อ</a>
+    <button class="round-btn" id="print" aria-label="พิมพ์หรือบันทึกเป็น PDF" style="background:var(--peach);color:#3A1200">🖨</button>
+    <button class="round-btn" id="openK" aria-label="เปิดช่องค้นหาด่วน" style="background:var(--sky);color:#06203A;font-size:12px;font-weight:700">⌘K</button>
+    <button class="round-btn" id="theme" aria-label="สลับโหมดกลางวัน / กลางคืน">🌙</button>
+  </div>
+</nav>
+
+<div class="wrap">
+  <section class="hero" id="hero">
+    <div>
+      <span class="tag">พอร์ตโฟลิโอยื่นเข้า ม.4 · แผนวิทย์–คณิต</span>
+      <h1 id="title"></h1>
+      <p class="hero-sub">นักเรียน ม.3 ที่ชอบตั้งคำถามกับทุกอย่างรอบตัว ฟังเพลงเก่ง อ่านหนังสือเยอะ และกำลังเก็บไอเดียไว้ทำธุรกิจของตัวเองในอนาคต</p>
+      <div class="btn-row">
+        <a class="btn btn-a" href="#idea">ลองปั่นไอเดียธุรกิจ</a>
+        <a class="btn btn-b" href="#about">ทำความรู้จักผม</a>
+      </div>
+    </div>
+
+    <div class="sticker photo-frame">
+      <button class="photo-slot" id="heroPhotoBtn" type="button" aria-label="รูปแนะนำตัว กดเพื่อเปลี่ยนรูป">
+        <img src="picture/IMG_8528.jpeg" alt="รูปแนะนำตัวของอยธนา กิตติธนวัตร">
+        <div class="photo-empty" id="heroPhotoEmpty" style="display:none">
+          <b>📷</b>
+          <span>กดหรือลากรูปมาวาง<br>เพื่อใส่รูปแนะนำตัว</span>
+        </div>
+        <span class="photo-edit" id="heroPhotoEdit">เปลี่ยนรูป</span>
+      </button>
+      <input type="file" id="heroPhotoFile" accept="image/*" hidden>
+      <p class="flask-cap">กด <b class="num">⌘K</b> หรือ <b class="num">/</b> เพื่อเปิดเมนูลัด</p>
+    </div>
+  </section>
+</div>
+
+<div class="rule"></div>
+
+<div class="wrap">
+  <section id="about">
+    <div class="sec-head"><span class="chip-icon" style="background:var(--sky)">🔬</span><h2>เกี่ยวกับผม</h2></div>
+    <p class="sec-lead">ข้อมูลพื้นฐาน และเหตุผลที่อยากเรียนต่อสายวิทย์–คณิต</p>
+    <div class="about">
+      <div class="idcol lift">
+        <div class="sticker idcard">
+          <div class="idtop">
+            <button class="avatar avatar-up" id="avatarBtn" type="button" aria-label="ใส่รูปโปรไฟล์">🧑‍🔬</button>
+            <input type="file" id="avatarFile" accept="image/*" hidden>
+            <div><h3>อยธนา กิตติธนวัตร</h3><p>นักเรียนชั้นมัธยมศึกษาปีที่ 3</p></div>
+          </div>
+          <div class="idrow"><span>อยากเข้าเรียน</span><span>แผนวิทย์–คณิต ม.4</span></div>
+          <div class="idrow"><span>วิชาที่ชอบ</span><span>ชีววิทยา · คณิตศาสตร์</span></div>
+          <div class="idrow"><span>งานอดิเรก</span><span>ฟังเพลง · อ่านหนังสือ</span></div>
+          <div class="idrow"><span>ความฝัน</span><span>เป็นผู้ประกอบการ</span></div>
+        </div>
+        <div class="mascot-nook">
+          <svg id="mascot" viewBox="0 0 200 210" role="img" aria-label="ตัวการ์ตูนขวดทดลอง แตะเล่นได้">
+            <defs><clipPath id="lc"><path d="M78 96 L78 60 h44 v36 l34 66 a22 22 0 0 1 -19 33 H63 a22 22 0 0 1 -19 -33 Z"/></clipPath></defs>
+            <g clip-path="url(#lc)">
+              <rect x="30" y="118" width="140" height="120" fill="var(--mint)"/>
+              <circle class="bub" cx="80" cy="180" r="5" fill="#fff" opacity=".55"/>
+              <circle class="bub" cx="108" cy="190" r="3.5" fill="#fff" opacity=".45"/>
+              <circle class="bub" cx="95" cy="175" r="2.8" fill="#fff" opacity=".5"/>
+            </g>
+            <path d="M78 96 L78 60 h44 v36 l34 66 a22 22 0 0 1 -19 33 H63 a22 22 0 0 1 -19 -33 Z"
+                  fill="none" stroke="var(--line)" stroke-width="6" stroke-linejoin="round"/>
+            <rect x="70" y="44" width="60" height="16" rx="8" fill="var(--yolk)" stroke="var(--line)" stroke-width="5"/>
+            <g>
+              <ellipse class="eye" cx="84" cy="150" rx="8" ry="9" fill="var(--line)"/>
+              <ellipse class="eye" cx="116" cy="150" rx="8" ry="9" fill="var(--line)"/>
+              <path d="M92 166 q8 8 16 0" fill="none" stroke="var(--line)" stroke-width="4.5" stroke-linecap="round"/>
+              <circle cx="70" cy="163" r="6" fill="var(--peach)" opacity=".7"/>
+              <circle cx="130" cy="163" r="6" fill="var(--peach)" opacity=".7"/>
+            </g>
+            <path d="M168 40 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4 Z" fill="var(--yolk)"/>
+            <path d="M30 78 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 Z" fill="var(--grape)"/>
+          </svg>
+          <p class="mascot-note">เพื่อนขวดทดลองของผม แตะเล่นได้นะ</p>
+        </div>
+      </div>
+      <div class="about-body lift">
+        <p>สวัสดีครับ ผมชื่ออยธนา ตอนนี้เรียนอยู่ ม.3 ครับ เวลาว่างผมมักหมดไปกับสองอย่างคือ <span class="hl">ฟังเพลง</span> กับ <span class="hl">อ่านหนังสือ</span> ซึ่งฟังดูเหมือนเรื่องเล่น ๆ แต่ทั้งสองอย่างสอนผมเรื่องเดียวกัน คือการสังเกตว่าอะไรทำให้คนชอบอะไรสักอย่าง</p>
+        <p>ผมอยากเป็นผู้ประกอบการครับ ไม่ใช่เพราะอยากรวย แต่เพราะอยากลองสร้างอะไรสักอย่างที่คนอื่นได้ใช้จริง ๆ และการจะทำแบบนั้นได้ต้องคิดเป็นระบบ ตั้งสมมติฐาน ทดลอง แล้ววัดผล ซึ่งเป็นวิธีคิดแบบเดียวกับที่ใช้ในห้องวิทยาศาสตร์</p>
+        <p>ตอนนี้ผมยังไม่มีผลงานหรือรางวัลมาโชว์ครับ เพราะที่ผ่านมาผมใช้เวลาไปกับการอ่านและเก็บความรู้มากกว่าการลงแข่ง สิ่งที่ผมเอามาเสนอได้ตอนนี้คือความตั้งใจ ความชอบที่ชัดเจน และแผนที่คิดมาแล้วว่าจะทำอะไรต่อใน ม.4</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="rule"></div>
+
+<div class="wrap">
+  <section id="skills">
+    <div class="sec-head"><span class="chip-icon" style="background:var(--peach)">🧪</span><h2>ทักษะและความถนัด</h2></div>
+    <p class="sec-lead">ประเมินจากตัวเองตามตรง ไม่ได้อ้างอิงคะแนนสอบ — จุดที่ยังไม่เต็มคือจุดที่ตั้งใจจะพัฒนาต่อใน ม.4</p>
+    <div class="skill-grid">
+      <div class="sticker skill-card lift">
+        <h3>วิชาที่ถนัด</h3>
+        <div class="meter"><span>ชีววิทยา</span><span class="dots" data-lv="4" style="--c:var(--mint)"></span></div>
+        <div class="meter"><span>คณิตศาสตร์</span><span class="dots" data-lv="4" style="--c:var(--sky)"></span></div>
+        <div class="meter"><span>เคมี</span><span class="dots" data-lv="3" style="--c:var(--peach)"></span></div>
+        <div class="meter"><span>ฟิสิกส์</span><span class="dots" data-lv="3" style="--c:var(--grape)"></span></div>
+      </div>
+      <div class="sticker skill-card lift">
+        <h3>ทักษะติดตัว</h3>
+        <div class="pills">
+          <span class="pill">อ่านจับใจความ</span>
+          <span class="pill">ตั้งคำถามกับสิ่งที่อ่าน</span>
+          <span class="pill">จดโน้ตเป็นระบบ</span>
+          <span class="pill">ทำงานเป็นทีม</span>
+          <span class="pill">คิดไอเดียใหม่ ๆ</span>
+        </div>
+      </div>
+      <div class="sticker skill-card lift">
+        <h3>กำลังฝึกอยู่ตอนนี้</h3>
+        <div class="pills">
+          <span class="pill">พูดนำเสนอหน้าห้อง</span>
+          <span class="pill">ภาษาอังกฤษ</span>
+          <span class="pill">เขียนแผนธุรกิจอย่างง่าย</span>
+          <span class="pill">บริหารเวลาอ่านหนังสือ</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="rule"></div>
+
+<div class="wrap">
+  <section id="hobby">
+    <div class="sec-head"><span class="chip-icon" style="background:var(--grape)">🎧</span><h2>สิ่งที่ชอบทำเวลาว่าง</h2></div>
+    <p class="sec-lead">สองอย่างที่อยู่กับผมทุกวัน แตะเล่นได้ทั้งคู่</p>
+    <div class="hobby">
+      <div class="sticker hbox lift">
+        <h3>ฟังเพลง</h3>
+        <svg class="cassette" id="tape" viewBox="0 0 260 150" role="img" aria-label="เทปคาสเซ็ต แตะเพื่อเล่น">
+          <rect x="6" y="6" width="248" height="138" rx="16" fill="var(--yolk)" stroke="var(--line)" stroke-width="5"/>
+          <rect x="34" y="28" width="192" height="62" rx="10" fill="var(--card)" stroke="var(--line)" stroke-width="4"/>
+          <g class="reel"><circle cx="90" cy="59" r="20" fill="var(--paper)" stroke="var(--line)" stroke-width="4"/>
+            <path d="M90 43 v8 M90 67 v8 M74 59 h8 M98 59 h8" stroke="var(--line)" stroke-width="4" stroke-linecap="round"/></g>
+          <g class="reel"><circle cx="170" cy="59" r="20" fill="var(--paper)" stroke="var(--line)" stroke-width="4"/>
+            <path d="M170 43 v8 M170 67 v8 M154 59 h8 M178 59 h8" stroke="var(--line)" stroke-width="4" stroke-linecap="round"/></g>
+          <rect x="70" y="104" width="120" height="24" rx="8" fill="var(--peach)" stroke="var(--line)" stroke-width="4"/>
+        </svg>
+        <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <p style="margin-top:14px">เพลงคือสิ่งที่ผมเปิดตลอดเวลาอ่านหนังสือ แนวที่ฟังบ่อยที่สุดคือเพลงที่ฟังแล้วโฟกัสได้นาน ๆ</p>
+        <div class="pills">
+          <span class="pill">ตอนอ่านหนังสือ</span>
+          <span class="pill">ตอนเดินทาง</span>
+          <span class="pill">ตอนคิดไอเดีย</span>
+        </div>
+      </div>
+
+      <div class="sticker hbox lift">
+        <h3>อ่านหนังสือ</h3>
+        <div class="shelf" id="shelf" role="group" aria-label="ชั้นหนังสือ แตะสันหนังสือเพื่อดูว่าอ่านแล้วได้อะไร"></div>
+        <p id="bookNote">แตะสันหนังสือดูว่าแต่ละแนวให้อะไรผมบ้าง</p>
+        <p style="margin:0">ผมชอบอ่านแบบสลับแนวไปเรื่อย ๆ เพราะเวลาเอาเรื่องคนละสายมาชนกัน มักจะได้ไอเดียแปลก ๆ ที่คิดเองไม่ออก</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="rule"></div>
+
+<div class="wrap">
+  <section id="idea">
+    <div class="sec-head"><span class="chip-icon" style="background:var(--yolk)">💡</span><h2>เครื่องปั่นไอเดียธุรกิจ</h2></div>
+    <p class="sec-lead">ผมชอบจดไอเดียธุรกิจเล่น ๆ เลยทำเครื่องนี้ไว้สุ่มโจทย์ให้ตัวเองคิดทุกวัน ลองกดดูได้เลยครับ</p>
+    <div class="sticker machine lift">
+      <div class="slots">
+        <div class="slot" id="s0"><div><small>ทำอะไร</small><span>ร้านหนังสือ</span></div></div>
+        <div class="slot" id="s1"><div><small>ให้ใคร</small><span>คนนอนไม่หลับ</span></div></div>
+        <div class="slot" id="s2"><div><small>จุดต่าง</small><span>เปิดเฉพาะกลางคืน</span></div></div>
+      </div>
+      <button class="btn btn-a" id="spin" style="margin-top:14px">🎲 สุ่มไอเดียใหม่</button>
+      <p id="ideaOut">กดปุ่มเพื่อเริ่ม แล้วลองคิดต่อว่าไอเดียที่ได้จะทำให้เกิดขึ้นจริงได้ยังไง</p>
+      <p id="ideaCount">สุ่มไปแล้ว <b class="num">0</b> ไอเดีย</p>
+    </div>
+  </section>
+</div>
+
+<div class="rule"></div>
+
+<div class="wrap">
+  <section id="album">
+    <div class="sec-head"><span class="chip-icon" style="background:var(--peach)">📸</span><h2>อัลบั้มรูปของผม</h2></div>
+    <p class="sec-lead">ลากรูปมาวางหรือกดการ์ดเส้นประเพื่อเพิ่มรูป แล้วพิมพ์คำบรรยายใต้รูปได้เลย รูปจะถูกเก็บไว้ในเครื่องนี้</p>
+    <div class="album" id="albumGrid">
+      <button class="addcard" id="addPhoto" type="button"><span><b>+</b>เพิ่มรูป</span></button>
+    </div>
+    <input type="file" id="photoFile" accept="image/*" multiple hidden>
+    <p class="hint" id="albumHint">ยังไม่มีรูปเลย ลองใส่รูปตอนทำกิจกรรม รูปหนังสือที่อ่าน หรือรูปห้องเรียนก็ได้ครับ</p>
+  </section>
+</div>
+
+<div class="rule"></div>
+
+<div class="wrap">
+  <section id="stampsec" style="padding-top:0">
+    <div class="sticker stampbox lift">
+      <h3 style="font-size:19px">สมุดสะสมแสตมป์</h3>
+      <p style="color:var(--ink-soft);font-size:14.5px;margin:4px 0 0">ลองเล่นให้ครบทุกอย่างในเว็บนี้ แล้วเก็บแสตมป์ให้ครบทั้ง 6 ดวงดูครับ</p>
+      <div class="stamps" id="stamps"></div>
+    </div>
+  </section>
+</div>
+
+<div class="rule"></div>
+
+<div class="wrap">
+  <section id="plan">
+    <div class="sec-head"><span class="chip-icon" style="background:var(--mint)">🗺️</span><h2>แผนของผมหลังจากนี้</h2></div>
+    <p class="sec-lead">เพราะยังไม่มีผลงานย้อนหลังมาโชว์ ผมเลยขอเสนอสิ่งที่ตั้งใจจะทำข้างหน้าแทน</p>
+    <div class="plan">
+      <div class="sticker step lift"><div class="stepnum" style="background:var(--mint)">1</div>
+        <div><h3>ม.4 — ลงมือทำให้ได้ชิ้นแรก</h3>
+        <p>เข้าชมรมวิทยาศาสตร์ ทำโครงงานให้จบอย่างน้อยหนึ่งชิ้น และลงแข่งตอบปัญหาอย่างน้อยหนึ่งรายการ เพื่อให้มีงานจริงมาเล่าได้ ไม่ใช่แค่ความตั้งใจ</p></div></div>
+      <div class="sticker step lift"><div class="stepnum" style="background:var(--sky)">2</div>
+        <div><h3>ม.5 — ลองขายของจริง</h3>
+        <p>หยิบไอเดียที่จดไว้มาทำเป็นธุรกิจเล็ก ๆ ในงานโรงเรียน เพื่อเรียนรู้เรื่องต้นทุน ราคา และการฟังเสียงลูกค้าจากของจริง</p></div></div>
+      <div class="sticker step lift"><div class="stepnum" style="background:var(--yolk)">3</div>
+        <div><h3>ม.6 — เลือกทางให้ชัด</h3>
+        <p>ตั้งเป้าเข้าคณะที่ต่อยอดได้ทั้งสายวิทย์และสายธุรกิจ พร้อมพอร์ตที่มีงานจริงเต็มเล่ม ไม่ใช่หน้าเปล่าแบบวันนี้</p></div></div>
+    </div>
+  </section>
+</div>
+
+<div class="rule"></div>
+
+<div class="wrap">
+  <section id="contact">
+    <div class="contact">
+      <div class="sticker note">
+        <h2>ติดต่อผมได้เลยครับ</h2>
+        <div class="cline"><span class="ic">✉️</span><span>อีเมล</span><a href="mailto:hym31211@gmail.com" id="mail">hym31211@gmail.com</a></div>
+        <div class="cline"><span class="ic">📱</span><span>โทรศัพท์</span><a href="tel:0812345678">081-234-5678</a></div>
+        <div class="cline"><span class="ic">📍</span><span>ที่อยู่</span><span>กรุงเทพมหานคร</span></div>
+        <button class="btn btn-b" id="copy" style="margin-top:14px">คัดลอกอีเมล</button>
+        <p class="hint">ถ้าคุณครูอยากถามเรื่องไหนเพิ่ม ผมยินดีตอบทุกคำถามครับ</p>
+      </div>
+      <div class="sticker why">
+        <h3>ทำไมผมถึงอยากเข้าแผนวิทย์–คณิต</h3>
+        <p>เพราะวิธีคิดแบบวิทยาศาสตร์คือเครื่องมือที่ผู้ประกอบการต้องใช้ทุกวัน ตั้งสมมติฐาน ลองทำ วัดผล แล้วแก้ ผมอยากฝึกวิธีคิดนี้จากห้องเรียนที่จริงจังที่สุด ก่อนจะเอาไปใช้กับเรื่องของตัวเองครับ</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<p class="foot">พอร์ตโฟลิโอนี้เขียนขึ้นเองเพื่อยื่นสมัครเรียนต่อชั้น ม.4 · อยธนา กิตติธนวัตร · 2569</p>
+
+<div class="kwrap" id="kwrap" role="dialog" aria-label="เมนูลัด">
+  <div class="kbox">
+    <input id="kin" placeholder="พิมพ์เพื่อค้นหา เช่น ไอเดีย, ติดต่อ, โหมดกลางคืน" aria-label="ค้นหาเมนู">
+    <ul id="klist"></ul>
+    <div class="kfoot">↑↓ เลือก · Enter ไปเลย · Esc ปิด</div>
+  </div>
+</div>
+<div id="toast" role="status"></div>
+
+<script>
+let ac=null;
+function blip(f=440,d=.07,t='sine'){
+  try{
+    if(!ac) ac=new (window.AudioContext||window.webkitAudioContext)();
+    if(ac.state==='suspended') ac.resume();
+    const o=ac.createOscillator(),g=ac.createGain();
+    o.type=t;o.frequency.value=f;
+    g.gain.setValueAtTime(.06,ac.currentTime);
+    g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+d);
+    o.connect(g).connect(ac.destination);o.start();o.stop(ac.currentTime+d);
+  }catch(e){}
+}
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+(function(){
+  const host=document.getElementById('title');
+  [...'อยธนา กิตติธนวัตร'].forEach((ch,i)=>{
+    const s=document.createElement('span');
+    s.className='wob';s.textContent=ch===' '?'\u00A0':ch;
+    s.style.transition='transform .25s cubic-bezier(.3,1.5,.5,1),color .25s';
+    s.addEventListener('mouseenter',()=>{
+      s.style.transform='translateY(-8px) rotate('+((i%2?1:-1)*7)+'deg)';
+      s.style.color='var(--peach)';blip(520+i*12);
+      setTimeout(()=>{s.style.transform='';s.style.color='';},380);
+    });
+    host.appendChild(s);
+  });
+})();
+
+const mascot=document.getElementById('mascot');
+const eyes=[...document.querySelectorAll('.eye')];
+window.addEventListener('mousemove',e=>{
+  const r=mascot.getBoundingClientRect();
+  const dx=Math.max(-1,Math.min(1,(e.clientX-(r.left+r.width/2))/r.width));
+  const dy=Math.max(-1,Math.min(1,(e.clientY-(r.top+r.height/2))/r.height));
+  eyes.forEach(el=>el.setAttribute('transform','translate('+(dx*4).toFixed(1)+','+(dy*3.5).toFixed(1)+')'));
+},{passive:true});
+setInterval(()=>{eyes.forEach(el=>el.setAttribute('ry','1.5'));
+  setTimeout(()=>eyes.forEach(el=>el.setAttribute('ry','9')),140);},4200);
+document.querySelectorAll('.bub').forEach((b,i)=>b.animate(
+  [{transform:'translateY(0)',opacity:.6},{transform:'translateY(-46px)',opacity:0}],
+  {duration:2600+i*700,iterations:Infinity,delay:i*500,easing:'ease-out'}));
+
+let taps=0;
+mascot.addEventListener('click',e=>{
+  mascot.animate([{transform:'rotate(0)'},{transform:'rotate(-7deg)'},{transform:'rotate(6deg)'},{transform:'rotate(0)'}],
+    {duration:420,easing:'ease-in-out'});
+  blip(660,.1);confetti(e.clientX,e.clientY);
+  if(++taps===5){taps=0;rain();toast('เจอโหมดลับแล้ว! ขอบคุณที่เล่นด้วยครับ 🎉');}
+});
+
+const bits=['✨','💡','⭐️','🫧','📚','🎧'];
+function confetti(x,y){
+  for(let i=0;i<10;i++){
+    const s=document.createElement('span');
+    s.className='bit';s.textContent=bits[Math.floor(Math.random()*bits.length)];
+    const a=Math.PI*2*i/10,d=50+Math.random()*60;
+    s.style.left=x+'px';s.style.top=y+'px';
+    s.style.setProperty('--dx',Math.cos(a)*d+'px');
+    s.style.setProperty('--dy',(Math.sin(a)*d-30)+'px');
+    s.style.setProperty('--rot',(Math.random()*360-180)+'deg');
+    document.body.appendChild(s);setTimeout(()=>s.remove(),900);
+  }
+}
+function rain(){
+  for(let i=0;i<34;i++){
+    const s=document.createElement('span');
+    s.className='rain';s.textContent=bits[Math.floor(Math.random()*bits.length)];
+    s.style.left=Math.random()*100+'vw';
+    s.style.animationDuration=(1.8+Math.random()*1.6)+'s';
+    s.style.animationDelay=(Math.random()*.6)+'s';
+    document.body.appendChild(s);setTimeout(()=>s.remove(),4200);
+  }
+}
+
+const io=new IntersectionObserver(es=>es.forEach(en=>{
+  if(!en.isIntersecting)return;
+  en.target.classList.add('on');
+  en.target.querySelectorAll('.dots').forEach(d=>{
+    const lv=+d.dataset.lv;
+    [...d.children].forEach((i,k)=>setTimeout(()=>{if(k<lv)i.classList.add('on');},k*90));
+  });
+  io.unobserve(en.target);
+}),{threshold:.2});
+document.querySelectorAll('.dots').forEach(d=>{for(let i=0;i<5;i++)d.appendChild(document.createElement('i'));});
+document.querySelectorAll('.lift').forEach(el=>io.observe(el));
+
+const tg=document.getElementById('theme');
+tg.addEventListener('click',toggleTheme);
+function toggleTheme(){
+  const dark=document.documentElement.getAttribute('data-theme')==='dark';
+  document.documentElement.setAttribute('data-theme',dark?'light':'dark');
+  tg.textContent=dark?'🌙':'☀️';blip(dark?500:380,.09);
+  toast(dark?'โหมดกลางวัน':'โหมดกลางคืน');if(!dark)stamp('night');
+}
+
+const tape=document.getElementById('tape');
+tape.addEventListener('click',()=>{
+  const on=tape.classList.toggle('spin');
+  document.querySelectorAll('.eq i').forEach(i=>i.style.animationPlayState=on?'running':'paused');
+  [523,587,659,784].forEach((f,i)=>on&&setTimeout(()=>blip(f,.12,'triangle'),i*110));
+  toast(on?'กำลังเล่น ▶':'หยุดเล่น ⏸');if(on)stamp('music');
+});
+
+const books=[
+  ['นิยาย','var(--peach)',96,'นิยายทำให้ผมเข้าใจว่าคนตัดสินใจเพราะอะไร ซึ่งใช้ได้จริงตอนคิดว่าจะขายของให้ใคร'],
+  ['วิทย์','var(--mint)',118,'หนังสือวิทยาศาสตร์สอนให้ผมไม่เชื่ออะไรง่าย ๆ จนกว่าจะเห็นหลักฐาน'],
+  ['ธุรกิจ','var(--yolk)',106,'เล่มที่อ่านซ้ำบ่อยที่สุด เพราะอยากรู้ว่าธุรกิจที่รอดกับที่เจ๊งต่างกันตรงไหน'],
+  ['ประวัติ','var(--grape)',128,'ชีวประวัติคนที่สร้างอะไรสักอย่าง ทำให้รู้ว่าเกือบทุกคนเริ่มจากศูนย์เหมือนกัน'],
+  ['การ์ตูน','var(--sky)',88,'อ่านเอาสนุกล้วน ๆ ครับ แต่ก็เป็นเล่มที่ทำให้ผมเริ่มรักการอ่านตั้งแต่แรก'],
+];
+const shelf=document.getElementById('shelf'),note=document.getElementById('bookNote');
+books.forEach(([name,color,h,text])=>{
+  const b=document.createElement('button');
+  b.className='book';b.style.height=h+'px';b.style.background=color;
+  b.innerHTML='<b>'+name+'</b>';b.type='button';b.setAttribute('aria-label','หนังสือแนว'+name);
+  b.addEventListener('click',()=>{
+    stamp('book');shelf.querySelectorAll('.book').forEach(x=>x.classList.remove('up'));
+    b.classList.add('up');note.textContent=text;blip(440,.07,'triangle');
+  });
+  shelf.appendChild(b);
+});
+
+const A=['ร้านหนังสือ','คาเฟ่','แอปฟังเพลง','ร้านขายของมือสอง','ห้องซ้อมดนตรี','บริการส่งของ','ร้านขนม','คลับอ่านหนังสือ','ร้านเช่าอุปกรณ์','พอดแคสต์'];
+const B=['นักเรียนที่อ่านหนังสือสอบ','คนนอนไม่หลับ','คนที่เพิ่งย้ายมาอยู่ใหม่','คนที่ทำงานคนเดียว','ผู้สูงอายุในชุมชน','คนที่ไม่ชอบอ่านหนังสือ','เด็กมัธยมที่ไม่มีที่ไปหลังเลิกเรียน','คนที่อยากเริ่มงานอดิเรกใหม่'];
+const C=['เปิดเฉพาะกลางคืน','จ่ายเป็นรายชั่วโมง','ไม่มีพนักงานเลย','เปลี่ยนธีมใหม่ทุกสัปดาห์','ให้ลูกค้าตั้งราคาเอง','ใช้ของเหลือจากร้านอื่น','เล่นเพลงตามอารมณ์ลูกค้า','สมัครสมาชิกเดือนละครั้ง'];
+let count=0;
+const slots=[document.getElementById('s0'),document.getElementById('s1'),document.getElementById('s2')];
+const pools=[A,B,C];
+document.getElementById('spin').addEventListener('click',()=>{
+  const picked=[];
+  slots.forEach((s,i)=>{
+    s.classList.add('rolling');
+    const t=setInterval(()=>{s.querySelector('span').textContent=pools[i][Math.floor(Math.random()*pools[i].length)];blip(300+i*80,.03);},80);
+    setTimeout(()=>{
+      clearInterval(t);s.classList.remove('rolling');
+      const v=pools[i][Math.floor(Math.random()*pools[i].length)];
+      picked[i]=v;s.querySelector('span').textContent=v;blip(520+i*120,.1,'triangle');
+      if(i===2){
+        count++;stamp('idea');
+        document.getElementById('ideaOut').textContent='"'+picked[0]+' สำหรับ'+picked[1]+' ที่'+picked[2]+'" — จะทำให้เกิดขึ้นจริงได้ยังไงดี?';
+        document.getElementById('ideaCount').innerHTML='สุ่มไปแล้ว <b class="num">'+count+'</b> ไอเดีย';
+        if(count===10){rain();toast('สิบไอเดียแล้ว! เลือกสักอันไปทำจริงไหมครับ');}
+      }
+    },500+i*260);
+  });
+});
+
+document.getElementById('copy').addEventListener('click',async()=>{
+  const mail=document.getElementById('mail').textContent;
+  try{await navigator.clipboard.writeText(mail);toast('คัดลอกอีเมลแล้ว');}
+  catch(e){toast('คัดลอกไม่ได้ ลองกดที่อีเมลตรง ๆ ครับ');}
+  blip(600,.08);
+});
+
+const prog=document.getElementById('prog');
+addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+
+function load(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){toast('รูปเยอะเกินไป เก็บเพิ่มไม่ได้แล้วครับ');}}
+
+function toSmallDataURL(file){
+  return new Promise((res,rej)=>{
+    const fr=new FileReader();
+    fr.onload=()=>{
+      const img=new Image();
+      img.onload=()=>{
+        const max=760,sc=Math.min(1,max/Math.max(img.width,img.height));
+        const c=document.createElement('canvas');
+        c.width=img.width*sc;c.height=img.height*sc;
+        c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+        res(c.toDataURL('image/jpeg',.82));
+      };
+      img.onerror=rej;img.src=fr.result;
+    };
+    fr.onerror=rej;fr.readAsDataURL(file);
+  });
+}
+
+const heroBtn=document.getElementById('heroPhotoBtn'),heroFile=document.getElementById('heroPhotoFile'),
+      heroEmpty=document.getElementById('heroPhotoEmpty'),heroEdit=document.getElementById('heroPhotoEdit');
+function setHeroPhoto(src){
+  let img=heroBtn.querySelector('img');
+  if(!img){img=document.createElement('img');heroBtn.prepend(img);}
+  img.src=src;img.alt='รูปแนะนำตัวของอยธนา';
+  heroEmpty.style.display='none';heroEdit.hidden=false;
+}
+const savedHero=load('heroPhoto',null);
+if(savedHero)setHeroPhoto(savedHero);
+heroBtn.addEventListener('click',()=>heroFile.click());
+heroFile.addEventListener('change',async()=>{
+  if(!heroFile.files[0])return;
+  const d=await toSmallDataURL(heroFile.files[0]);
+  setHeroPhoto(d);save('heroPhoto',d);stamp('photo');
+  blip(660,.1);confetti(innerWidth/2,220);toast('ใส่รูปแนะนำตัวแล้ว');
+});
+['dragenter','dragover'].forEach(ev=>heroBtn.addEventListener(ev,e=>{e.preventDefault();heroBtn.classList.add('over');}));
+['dragleave','drop'].forEach(ev=>heroBtn.addEventListener(ev,e=>{e.preventDefault();heroBtn.classList.remove('over');}));
+heroBtn.addEventListener('drop',async e=>{
+  e.stopPropagation();
+  const f=e.dataTransfer.files[0];
+  if(f&&f.type.startsWith('image/')){
+    const d=await toSmallDataURL(f);setHeroPhoto(d);save('heroPhoto',d);stamp('photo');
+    blip(660,.1);confetti(innerWidth/2,220);toast('ใส่รูปแนะนำตัวแล้ว');
+  }
+});
+
+const avatarBtn=document.getElementById('avatarBtn'),avatarFile=document.getElementById('avatarFile');
+const savedAvatar=load('avatar',null);
+function setAvatar(src){avatarBtn.innerHTML='<img src="'+src+'" alt="รูปโปรไฟล์">';}
+if(savedAvatar)setAvatar(savedAvatar);
+avatarBtn.addEventListener('click',()=>avatarFile.click());
+avatarFile.addEventListener('change',async()=>{
+  if(!avatarFile.files[0])return;
+  const d=await toSmallDataURL(avatarFile.files[0]);
+  setAvatar(d);save('avatar',d);stamp('photo');toast('เปลี่ยนรูปโปรไฟล์แล้ว');blip(600,.08);
+});
+
+const grid=document.getElementById('albumGrid'),addBtn=document.getElementById('addPhoto'),
+      photoFile=document.getElementById('photoFile'),albumHint=document.getElementById('albumHint');
+let album=load('album',[]);
+function drawAlbum(){
+  grid.querySelectorAll('.polaroid').forEach(p=>p.remove());
+  album.forEach((it,i)=>{
+    const d=document.createElement('figure');
+    d.className='polaroid';d.style.margin='0';
+    d.innerHTML='<img src="'+it.src+'" alt="'+(it.cap||'รูปในอัลบั้ม')+'">'+
+      '<input class="cap" value="'+(it.cap||'').replace(/"/g,'&quot;')+'" placeholder="พิมพ์คำบรรยาย…" aria-label="คำบรรยายรูป">'+
+      '<button class="del" type="button" aria-label="ลบรูปนี้">✕</button>';
+    d.querySelector('.cap').addEventListener('input',e=>{album[i].cap=e.target.value;save('album',album);});
+    d.querySelector('.del').addEventListener('click',()=>{album.splice(i,1);save('album',album);drawAlbum();blip(280,.09);});
+    grid.insertBefore(d,addBtn);
+  });
+  albumHint.style.display=album.length?'none':'';
+}
+drawAlbum();
+async function addFiles(files){
+  for(const f of [...files].slice(0,8)){
+    if(!f.type.startsWith('image/'))continue;
+    album.push({src:await toSmallDataURL(f),cap:''});
+  }
+  save('album',album);drawAlbum();stamp('photo');
+  blip(660,.1);confetti(innerWidth/2,innerHeight/2);toast('เพิ่มรูปแล้ว พิมพ์คำบรรยายใต้รูปได้เลย');
+}
+addBtn.addEventListener('click',()=>photoFile.click());
+photoFile.addEventListener('change',()=>photoFile.files.length&&addFiles(photoFile.files));
+['dragenter','dragover'].forEach(ev=>addBtn.addEventListener(ev,e=>{e.preventDefault();addBtn.classList.add('over');}));
+['dragleave','drop'].forEach(ev=>addBtn.addEventListener(ev,e=>{e.preventDefault();addBtn.classList.remove('over');}));
+addBtn.addEventListener('drop',e=>e.dataTransfer.files.length&&addFiles(e.dataTransfer.files));
+document.addEventListener('dragover',e=>e.preventDefault());
+document.addEventListener('drop',e=>{
+  if(e.dataTransfer.files.length){e.preventDefault();addFiles(e.dataTransfer.files);
+    document.getElementById('album').scrollIntoView({behavior:'smooth'});}
+});
+
+const stampList=[['photo','📸','ใส่รูป'],['music','🎧','เปิดเพลง'],['book','📚','เปิดหนังสือ'],
+  ['idea','💡','ปั่นไอเดีย'],['night','🌙','ลองโหมดกลางคืน'],['key','⌨️','ใช้เมนูลัด']];
+let got=load('stamps',{});
+const stampWrap=document.getElementById('stamps');
+stampList.forEach(([k,ic,label])=>{
+  const d=document.createElement('div');
+  d.className='stamp'+(got[k]?' got':'');d.dataset.k=k;
+  d.innerHTML='<div class="ring">'+ic+'</div>'+label;
+  stampWrap.appendChild(d);
+});
+stamp('photo');
+function stamp(k){
+  if(got[k])return;
+  got[k]=1;save('stamps',got);
+  const el=stampWrap.querySelector('[data-k="'+k+'"]');
+  if(el)el.classList.add('got');
+  blip(720,.12,'triangle');
+  if(stampList.every(s=>got[s[0]])){rain();toast('เก็บแสตมป์ครบทั้ง 6 ดวงแล้ว ขอบคุณที่เล่นจนจบครับ 🎉');}
+}
+
+document.getElementById('print').addEventListener('click',()=>{
+  toast('เลือก "บันทึกเป็น PDF" ในหน้าต่างพิมพ์ได้เลย');
+  setTimeout(()=>window.print(),600);
+});
+
+const kwrap=document.getElementById('kwrap'),kin=document.getElementById('kin'),klist=document.getElementById('klist');
+const actions=[
+  ['🏠','ไปหน้าแรก',()=>go('#hero')],
+  ['🔬','เกี่ยวกับผม',()=>go('#about')],
+  ['🧪','ทักษะและความถนัด',()=>go('#skills')],
+  ['🎧','สิ่งที่ชอบทำเวลาว่าง',()=>go('#hobby')],
+  ['💡','เครื่องปั่นไอเดียธุรกิจ',()=>go('#idea')],
+  ['🗺️','แผนของผมหลังจากนี้',()=>go('#plan')],
+  ['✉️','ติดต่อผม',()=>go('#contact')],
+  ['🌙','สลับโหมดกลางวัน / กลางคืน',toggleTheme],
+  ['🎲','สุ่มไอเดียธุรกิจเลย',()=>{go('#idea');setTimeout(()=>document.getElementById('spin').click(),500);}],
+  ['📋','คัดลอกอีเมล',()=>document.getElementById('copy').click()],
+  ['📸','ไปอัลบั้มรูป',()=>go('#album')],
+  ['🖼','เพิ่มรูปใหม่',()=>{go('#album');setTimeout(()=>document.getElementById('addPhoto').click(),500);}],
+  ['🖨','บันทึกเป็น PDF',()=>document.getElementById('print').click()],
+  ['🎉','ปล่อยของเล่น',()=>rain()],
+];
+let shown=[],sel=0;
+function go(h){document.querySelector(h).scrollIntoView({behavior:'smooth'});}
+function render(q=''){
+  shown=actions.filter(a=>a[1].toLowerCase().includes(q.toLowerCase()));
+  sel=0;klist.innerHTML='';
+  shown.forEach((a,i)=>{
+    const li=document.createElement('li');
+    li.innerHTML='<span>'+a[0]+'</span><span>'+a[1]+'</span>';
+    if(i===0)li.className='sel';
+    li.addEventListener('click',()=>{run(i);});
+    klist.appendChild(li);
+  });
+  if(!shown.length)klist.innerHTML='<li style="color:var(--ink-soft)">ไม่เจอเมนูนี้ ลองพิมพ์คำอื่นดูครับ</li>';
+}
+function run(i){const a=shown[i];if(!a)return;closeK();blip(560,.09);a[2]();}
+function openK(){stamp('key');kwrap.classList.add('open');kin.value='';render();kin.focus();blip(480,.06);}
+function closeK(){kwrap.classList.remove('open');}
+document.getElementById('openK').addEventListener('click',openK);
+kwrap.addEventListener('click',e=>{if(e.target===kwrap)closeK();});
+kin.addEventListener('input',()=>render(kin.value));
+document.addEventListener('keydown',e=>{
+  const typing=/INPUT|TEXTAREA/.test(document.activeElement.tagName);
+  if(((e.key==='k'||e.key==='K')&&(e.metaKey||e.ctrlKey))||(e.key==='/'&&!typing)){e.preventDefault();openK();return;}
+  if(!kwrap.classList.contains('open'))return;
+  if(e.key==='Escape')closeK();
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+    e.preventDefault();
+    const items=[...klist.children].filter(li=>li.querySelector('span'));
+    if(!items.length)return;
+    items[sel]?.classList.remove('sel');
+    sel=(sel+(e.key==='ArrowDown'?1:-1)+items.length)%items.length;
+    items[sel].classList.add('sel');items[sel].scrollIntoView({block:'nearest'});
+  }
+  if(e.key==='Enter')run(sel);
+});
+</script>
+</body>
+</html>
